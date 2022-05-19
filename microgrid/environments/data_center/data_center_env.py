@@ -35,10 +35,8 @@ class DataCenterEnv(gym.Env):
         self.EER = self.data_center.EER
         self.COP_CS = self.EER + 1
         self.max_transfert = self.data_center.max_transfert
-        self.data = pd.read_csv(os.path.join(os.path.dirname(__file__), f'scenarios/data_center/data.csv'),
-                                delimiter=';')
-        self.prices = pd.read_csv(os.path.join(os.path.dirname(__file__), f'scenarios/data_center/hotwater_prices.csv'),
-                                  delimiter=';')
+        self.data = pd.read_csv(os.path.join(os.path.dirname(__file__), f'scenarios/data_center/data.csv'),   delimiter=';')
+        self.prices = pd.read_csv(os.path.join(os.path.dirname(__file__), f'scenarios/data_center/hotwater_prices.csv'),  delimiter=';')
 
     def step(self, action: ActType) -> Tuple[ObsType, float, bool, dict]:
         max_alpha = self.data_center.get_max_alpha_t(self.now, self.delta_t)
